@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">mke</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="registration">Регистрация</string>
+    <string name="byNumber">По номеру</string>
+    <string name="byEmail">По email</string>
+    <string name="enterEmail">Введите email</string>
+    <string name="enterPassword">Введите пароль</string>
+    <string name="repeatPassword">Повторите пароль</string>
+    <string name="uppercaseRegister">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="enter">Вход</string>
+    <string name="enterEmailOrNumber">Введите email/номер</string>
+    <string name="enterAutomatically">Входить автоматически</string>
+    <string name="uppercaseEnter">ВОЙТИ</string>
+</resources>

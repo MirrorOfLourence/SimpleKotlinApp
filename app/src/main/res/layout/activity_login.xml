@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Добро пожаловать -->
+    <TextView
+        android:id="@+id/tvWelcomeLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/welcome"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Вход -->
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="@string/enter"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcomeLogin" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvLogin">
+
+        <!-- Ввод email/пароль -->
+        <EditText
+            android:id="@+id/etEmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enterEmailOrNumber"
+            android:inputType="textEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_marginTop="16dp" />
+
+        <!-- Ввод пароля -->
+        <EditText
+            android:id="@+id/etPasswordLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enterPassword"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/etEmailLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8"
+            android:layout_marginTop="8dp" />
+
+        <!-- Чекбокс "Входить автоматически" -->
+        <CheckBox
+            android:id="@+id/cbAutoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enterAutomatically"
+            app:layout_constraintTop_toBottomOf="@id/etPasswordLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Кнопка входа -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple"
+        android:text="@string/uppercaseEnter"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintVertical_bias="0.278" />
+</androidx.constraintlayout.widget.ConstraintLayout>
