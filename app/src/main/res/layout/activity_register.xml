@@ -68,10 +68,10 @@
 
         <!-- Email input field -->
         <EditText
-            android:id="@+id/etEmailRegister"
+            android:id="@+id/etEditNumberOrEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enterEmail"
+            android:hint="@string/enterNumber"
             android:inputType="textEmailAddress" />
 
         <!-- Password input field -->

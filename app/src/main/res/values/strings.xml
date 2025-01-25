@@ -5,6 +5,7 @@
     <string name="byNumber">По номеру</string>
     <string name="byEmail">По email</string>
     <string name="enterEmail">Введите email</string>
+    <string name="enterNumber">Введите номер</string>
     <string name="enterPassword">Введите пароль</string>
     <string name="repeatPassword">Повторите пароль</string>
     <string name="uppercaseRegister">ЗАРЕГИСТРИРОВАТЬСЯ</string>
@@ -12,4 +13,6 @@
     <string name="enterEmailOrNumber">Введите email/номер</string>
     <string name="enterAutomatically">Входить автоматически</string>
     <string name="uppercaseEnter">ВОЙТИ</string>
+    <string name="invalidEmail">Введен некорректный email</string>
+    <string name="invalidNumber">Введен некорректный номер телефона</string>
 </resources>
