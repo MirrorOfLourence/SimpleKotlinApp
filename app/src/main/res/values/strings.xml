@@ -15,4 +15,8 @@
     <string name="uppercaseEnter">ВОЙТИ</string>
     <string name="invalidEmail">Введен некорректный email</string>
     <string name="invalidNumber">Введен некорректный номер телефона</string>
+    <string name="firstFragmentTitle">First</string>
+    <string name="secondFragmentTitle">Second</string>
+    <string name="firstFragmentText">FIRST FRAGMENT</string>
+    <string name="secondFragmentText">SECOND FRAGMENT</string>
 </resources>
