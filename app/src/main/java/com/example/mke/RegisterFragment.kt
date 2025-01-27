@@ -2,6 +2,7 @@ package com.example.mke
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,10 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import java.util.regex.Pattern
 
 class RegisterFragment : Fragment() {
@@ -69,13 +73,28 @@ class RegisterFragment : Fragment() {
                     Toast.makeText(requireContext(), "Passwords do not match", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    val sharedPrefsUtils = SharedPrefsUtils(requireContext())
-                    sharedPrefsUtils.writeCredentialsToSharedPrefs(
-                        editNumberOrEmail.inputType,
-                        input,
-                        password
-                    )
-                    findNavController().navigate(R.id.firstFragment)
+                    val auth = FirebaseAuth.getInstance()
+                    val navController = NavHostFragment.findNavController(this)
+                    auth.createUserWithEmailAndPassword(input, password)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val sharedPrefsUtils = SharedPrefsUtils(requireContext())
+                                sharedPrefsUtils.writeCredentialsToSharedPrefs(
+                                    editNumberOrEmail.inputType,
+                                    input,
+                                    password
+                                )
+                                navController.navigate(R.id.firstFragment)
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            if (exception is FirebaseAuthUserCollisionException) {
+                                Toast.makeText(requireContext(), "Email is already registered. Redirecting to Login.", Toast.LENGTH_LONG).show()
+                                navController.navigate(R.id.loginFragment)
+                            } else {
+                                Toast.makeText(requireContext(), exception.localizedMessage, Toast.LENGTH_LONG).show()
+                            }
+                        }
                 }
             }
         }
@@ -83,7 +102,10 @@ class RegisterFragment : Fragment() {
     }
 
     private fun isValidEmail(email: String): Boolean {
-        val emailPattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$")
+        val emailPattern = Pattern.compile(
+            "^[A-Za-z0-9_+&*-]+(?:\\.[A-Za-z0-9_+&*-]+)*@" +
+                    "(?:[A-Za-z0-9-]+\\.)+[A-Za-z]{2,7}$"
+        )
         return emailPattern.matcher(email).matches()
     }
 
